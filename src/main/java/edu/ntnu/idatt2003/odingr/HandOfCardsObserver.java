@@ -5,5 +5,5 @@ import edu.ntnu.idatt2003.odingr.models.PlayingCard;
 import java.util.List;
 
 public interface HandOfCardsObserver {
-  void HandChanged(List<PlayingCard> cards);
+  void handChanged(List<PlayingCard> cards);
 }

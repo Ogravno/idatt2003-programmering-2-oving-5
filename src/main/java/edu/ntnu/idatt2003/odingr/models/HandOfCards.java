@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HandOfCards {
-  List<PlayingCard> cards;
-  List<HandOfCardsObserver> observers;
+  private List<PlayingCard> cards;
+  private final List<HandOfCardsObserver> observers;
 
-  public HandOfCards() {}
+  public HandOfCards() {
+    this.cards = new ArrayList<>();
+    this.observers = new ArrayList<>();
+  }
 
   public void addObserver(HandOfCardsObserver observer) {
     observers.add(observer);
@@ -21,7 +24,7 @@ public class HandOfCards {
 
   private void notifyObservers() {
     for (HandOfCardsObserver observer : observers) {
-      observer.HandChanged(new ArrayList<>(cards));
+      observer.handChanged(new ArrayList<>(cards));
     }
   }
 
@@ -30,8 +33,7 @@ public class HandOfCards {
   }
 
   public void setCards(List<PlayingCard> cards) {
-    this.cards = cards;
+    this.cards = new ArrayList<>(cards);
+    notifyObservers();
   }
-
-
 }
