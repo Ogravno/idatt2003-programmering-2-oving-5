@@ -1,4 +1,4 @@
-package edu.ntnu.idatt2003.odingr;
+package edu.ntnu.idatt2003.odingr.models;
 
 import java.util.ArrayList;
 import java.util.Collections;
