@@ -36,4 +36,34 @@ public class HandOfCards {
     this.cards = new ArrayList<>(cards);
     notifyObservers();
   }
+
+  public int sumFaces() {
+    return cards.stream()
+        .map(card -> card.getFace())
+        .mapToInt(Integer::intValue)
+        .sum();
+  }
+
+  public List<PlayingCard> getCards(char suit) {
+    if (suit != 'H' && suit != 'D' && suit != 'C' && suit != 'S') {
+      throw new IllegalArgumentException("Parameter suit must be one of H, D, C or S");
+    }
+    return cards.stream()
+        .filter(card -> card.getSuit() == suit)
+        .toList();
+  }
+
+  public boolean containsQueenOfSpades() {
+    return cards.stream()
+        .anyMatch(card -> card.getSuit() == 'S' && card.getFace() == 12);
+  }
+
+  public boolean isFlush() {
+    if (cards.isEmpty()) {
+      return false;
+    }
+    char suit = cards.get(0).getSuit();
+    return cards.stream()
+        .allMatch(card -> card.getSuit() == suit);
+  }
 }

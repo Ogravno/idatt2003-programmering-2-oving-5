@@ -16,7 +16,6 @@ public class App extends Application {
     HandOfCardsController controller = new HandOfCardsController(model);
     HandOfCardsView handOfCardsView = new HandOfCardsView(controller);
 
-    // Wire up the observer pattern - App is responsible for connecting Model and View
     model.addObserver(handOfCardsView);
 
     Scene scene = handOfCardsView.createView();

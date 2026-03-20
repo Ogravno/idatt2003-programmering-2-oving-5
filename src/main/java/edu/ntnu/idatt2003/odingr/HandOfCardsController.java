@@ -15,4 +15,20 @@ public class HandOfCardsController {
   public void drawHand() {
     model.setCards(deckOfCards.dealHand(5));
   }
+
+  public int getSumOfFaces() {
+    return model.sumFaces();
+  }
+
+  public boolean hasSuit(char suit) {
+    return !model.getCards(suit).isEmpty();
+  }
+
+  public boolean isFlush() {
+    return model.isFlush();
+  }
+
+  public  boolean containsQueenOfSpades() {
+    ;return  model.containsQueenOfSpades();
+  }
 }
