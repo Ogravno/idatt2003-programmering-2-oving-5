@@ -2,7 +2,6 @@ package edu.ntnu.idatt2003.odingr;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -22,7 +21,7 @@ class DeckOfCardsTest {
   void constructorCreates52Cards() {
     DeckOfCards cardDeck = new DeckOfCards();
     assertEquals(52, cardDeck.getCards().size());
-    assertEquals("S1", cardDeck.getCards().getFirst());
+    assertEquals("S1", cardDeck.getCards().getFirst().getAsString());
   }
 
   @Nested
@@ -35,14 +34,14 @@ class DeckOfCardsTest {
 
     @Test
     void dealHandDealsHand() {
-      List<String> hand = deckOfCards.dealHand(5);
+      List<PlayingCard> hand = deckOfCards.dealHand(5);
       assertEquals(5, hand.size());
     }
 
     @Test
     void dealHandDealsUniqueHand() {
-      List<String> hand = deckOfCards.dealHand(5);
-      List<String> uniqueHand = hand.stream().distinct().toList();
+      List<PlayingCard> hand = deckOfCards.dealHand(5);
+      List<PlayingCard> uniqueHand = hand.stream().distinct().toList();
       assertEquals(uniqueHand.size(), hand.size());
     }
   }

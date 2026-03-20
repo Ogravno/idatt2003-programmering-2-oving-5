@@ -1,9 +1,7 @@
 package edu.ntnu.idatt2003.odingr;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -11,7 +9,7 @@ import java.util.List;
  */
 public class DeckOfCards {
   private final char[] suits = { 'S', 'H', 'D', 'C' };
-  private final List<String> cards;
+  private final List<PlayingCard> cards;
 
   /**
    * Creates a deck of playing cards.
@@ -23,12 +21,12 @@ public class DeckOfCards {
 
     for (char suit : suits) {
       for (int i = 1; i < 14; i++) {
-        cards.add(suit + String.valueOf(i));
+        cards.add(new PlayingCard(suit, i));
       }
     }
   }
 
-  public List<String> getCards() {
+  public List<PlayingCard> getCards() {
     return cards;
   }
 
@@ -39,12 +37,12 @@ public class DeckOfCards {
    *          number of cards in the deck.
    * @return the dealt hand as a {@link List} of cards
    */
-  public List<String> dealHand(int n) {
+  public List<PlayingCard> dealHand(int n) {
     if (n < 5 | n > cards.size()) {
       throw new IllegalArgumentException("invalid number of cards");
     }
 
-    List<String> cardsCopy = new ArrayList<>(cards);
+    List<PlayingCard> cardsCopy = new ArrayList<>(cards);
     Collections.shuffle(cardsCopy);
     return cardsCopy.stream()
         .limit(n)
